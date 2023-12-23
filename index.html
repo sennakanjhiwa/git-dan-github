@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git dan GitHub</title>
+</head>
+<body>
+    <h2>Repository dan Menambahkan File</h2>
+    <p><a href="https://git-scm.com/book/id/v2/Memulai-Pengaturan-Awal-Git">https://git-scm.com/book/id/v2/Memulai-Pengaturan-Awal-Git</a></p>
+    <p>(git init) untuk mengubah folder menjadi repositori</p>
+    <p>Working Direktori, belum masuk ke repositori</p>
+    <p>(git status) untuk melakukan pengecekan folder/file, jika warna <span style="color: red;">merah</span> maka belum masuk ke staging/repositori/untracked(file baru yg belum pernah masuk ke repositori)/modified(file lama yg telah dimodifikasi) dan jika berwarna <span style="color: green;">hijau</span> maka masuk di stagging.</p>
+    <p>(git add .) untuk menambahkan semua file/folder ke staging</p>
+    <p>(git add "nama file") untuk menambahkan satu file ke staging</p>
+    <p>(git commit -m "Pesan yang perlu diisi") untuk memindahkan file dari staging ke repositori</p>
+    <h2>Mengubah File dan Git Diff</h2>
+    <p>(git diff) untuk mencari tahu apa yang berbeda dari yang sebelumnya/jika terjadi perubahan. Klik tombol "<b>q</b>" untuk keluar dari mode diff.</p>
+    <h2>Melihat History dengan Git Log</h2>
+    <p>(git log) untuk melihat histori/perubahan pada perjalanan development dan git kita. git log berisi:<br><blockquote><span style="color: #dada00;">commit 9f71fa3ac67f3ffcd499dd4f051c57696a39d808 (</span><span style="color: rgb(50, 156, 255);">HEAD -></span> <span style="color: rgb(0, 255, 149);">master</span><span style="color: #dada00;">)</span>
+        <br>Author: Senna Bhany Majid <cs.kanjhiwa@gmail.com>
+        <br>Date:   Mon Jul 3 21:40:41 2023 +0700
+        <br><br>
+            Memperbaiki tipo dan menambah penjelasan git diff</blockquote></p>
+    <p>(git log --oneline) untuk mempersingkat git log. git log --oneline berisi:<br><blockquote><span style="color: #dada00;">9f71fa3 (</span><span style="color: rgb(50, 156, 255);">HEAD -></span> <span style="color: rgb(0, 255, 149);">master</span><span style="color: #dada00;">)</span> Memperbaiki tipo dan menambah penjelasan git diff<br>
+        <span style="color: #dada00;">cdb97e4</span> Mempelajari git init, git add, git status dan git commit</blockquote></p>
+    <h2>Membatalkan Perubahan dengan Git Restore</h2>
+    <p>(git restore "nama file") untuk mengembalikan/membatalkan perubahan yang terjadi pada suatu file modified di working area</p>
+    <p>(git restore .) untuk mengembalikan/membatalkan perubahan pada semua file di working area</p>
+    <h2>Git Reset dan Git Restore Staged</h2>
+    <p>(git restore -S "nama file") untuk mengembalikan file modified dari staging area ke working direktori</p>
+    <p>(git reset .) untuk mengubah semua file di staging area ke working direktori</p>
+    <h2>Kembali ke Commit Sebelumnya dengan Git Reset</h2>
+    <p>(git reset --hard "nomor hash commit") untuk kembali ke commit sebelumnya sesuai dengan nomor hash yang digunakan dan menghapus commit setelahnya. Untuk melihat nomor hash lakukan git log --oneline</p>
+    <h2>Branch dan Merge</h2>
+    <p>(git checkout -b "nama branch") untuk membuat branch baru diluar branch master/main</p>
+    <p>(git checkout master) untuk berpindah ke branch master/main</p>
+    <p>(git merge "nama branch") untuk menggabungkan branch cabang ke branch master/main</p>
+    <h2>Merevisi Commit dengan Git Revert</h2>
+    <p>(git revert "nomor hash") untuk memperbaiki/merevisi commit sebelumnya, gunakan git log --oneline untuk mengcopy nomor hash commit yang akan direvisi. Tidak akan menghapus commit setelahnya, namun akan menimbulkan konflik.</p>
+    <h2>Memulai dan Membuat Repository di Github</h2>
+    <p>Setting SSH. Masuk ke halaman profile GitHub > Settings > SSH and GPG keys > generating SSH keys > Generate new SSH key (<a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">klik disini</a>) > Add a new SSH key, Lalu copy SSHnya. Kembali ke <a href="https://github.com/settings/keys">sini</a>, lalu klik New SSH key. Pastekan SSH key Laptop/PC Anda disana.</p>
+    <h2>Membuat Repositori Baru</h2>
+    <p>echo "# git-dan-github" >> README.md</p>
+<p>git init</p>
+<p>git add README.md</p>
+<p>git commit -m "first commit"</p>
+<p>git branch -M main</p>
+<p>git remote add origin git@github.com:kanjhiwa/git-dan-github.git</p>
+<p>git push -u origin main</p>
+<h2>Git Clone dan Git Push</h2>
+<p>Masuk ke repositori, lalu pilih code dan clone menggunakan SSH. Contoh sebagai berikut.<br>
+    (git clone git@github.com:kanjhiwa/git-dan-github.git) untuk mengclone dari repositori tersebut.
+</p>
+<p>(git push origin main) untuk melakukan push atau update perubahan terbaru ke GitHub. Gunakan git push origin master jika sebelumnya tidak diubah ke main.</p>
+<h2>Github Pull Request</h2>
+<p>(git checkout -b "nama branch") untuk membuat branch baru atau branch cabang</p>
+<p>(git push origin "nama branch cabang") untuk melakukan pull request di GitHub atau push ke GitHub dengan branch cabang yang nantinya masuk ke Pull Request dan kita create pull request. Jika oleh maintener code yang telah kita create pull request sudah sesuai keinginan, maka maintener akan melakukan merge pull request sehingga code kita akan digabungkan ke branch main/master.</p>
+<p>(git pull origin main) untuk menyingkronkan code kita dengan yang ada di GitHub. Hal ini penting agar kita mendapatkan perubahan terbaru yang terjadi di repositori GitHub yang sedang kita remote.</p>
+<h2>Aturan Menulis Pesan Saat Commit</h2>
+<p>Pesan pada saat commit sangatlah penting, oleh karena itu kita perlu menuliskan pesan dengan baik dan benar. Kunjungi situs <a href="https://www.conventionalcommits.org/en/v1.0.0/">https://www.conventionalcommits.org/en/v1.0.0/</a> untuk melihat penulisan commit yang rapi dan baik.</p>
+</body>
+</html>
